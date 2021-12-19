@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
   get 'services/getall' => 'services#getall'
   get 'services/getalljson' => 'services#getalljson' 
   get 'services/getter/:id' => 'services#getter'
