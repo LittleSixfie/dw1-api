@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Article</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link rel="stylesheet" media="screen" type="text/css" href="/css/style_carlos.css">
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+	</head>
+
+	<header></header>
+    
+    <body>
+
+        <div id="particles-js"></div>
+
+        <div id="title" class="title">
+            
+        </div>
+
+        <div class="container article">
+            <div id="article" class="article-group">
+                
+            </div>
+		</div>
+	</body>
+    <footer></footer>
+</html>
+
+<script>
+
+	//alert(location.href)
+	var url = location.href;
+	var id = url.substring(url.lastIndexOf('=') + 1);
+	function load() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		if(this.readyState == 4 && this.status == 200) {
+			let title = document.getElementById("title"); 
+			let article = document.getElementById("article"); 
+			let responses = JSON.parse(this.responseText);
+			for(var i = 0; i < responses.length; i++) {
+				if(id == responses[i].id) {
+					title.insertAdjacentHTML("afterbegin", '<h1>'+responses[i].title+'</h1> <p>'+responses[i].created_at+' | '+responses[i].tags+'</p>');
+					article.insertAdjacentHTML("afterbegin", '<div class="article-image"><img src="'+responses[i].image+'" /></div> <div class="article-text"> <h2 class="article-subtitle">'+responses[i].subtitle+'</h2> <p>'+responses[i].text+'</p></div>');
+				}
+			}
+		}
+		};
+		xhttp.open("GET", "http://192.168.56.101:3000/articles/show", true);
+		xhttp.send();
+	}
+
+	
+
+	/*function load (){
+	  return new Promise(function(resolve,reject){
+		$.getJSON("/json/blog.json", function(json){
+		$.each(json.blog_new, function(entradas) {
+            
+		  if(this.id == localStorage.getItem("id")){  .
+		  var blog_title_h1 = '<h1>'+this.title+'</h1>';
+		  var blog_title_p = '<p>'+this.timestamp+' | '+this.tags+'</p>';
+          var blog_article_img = '<div class="article-image"><img src="'+this.image+'" /></div>';
+          var blog_article_h2 = '<h2 class="article-subtitle">'+this.subtitle+'</h2>';
+          var blog_article_p = '<p>'+this.text+'</p>';
+          var blog_article_div = '<div class="article-text">'+blog_article_h2+blog_article_p+'</div>';
+		  $('.article-group').append(blog_article_img+blog_article_div);
+		  $('.title').append(blog_title_h1+blog_title_p);
+          resolve("done");
+		}
+		});
+	  });
+	});
+  } */
+  
+	$(document).ready(async function(){
+	  await load();
+      $('header').load('header_alt.html');
+	  $('footer').load('footer_alt.html');
+	});
+</script>
+
+<script src="/js/particles.min.js"></script>
+<script src="/js/app.js"></script>

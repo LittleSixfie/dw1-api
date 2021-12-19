@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Services Page</title>
+	
+	<link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="../css/style_Jorge.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <link rel="stylesheet" media="screen" type="text/css" href="../css/style_carlos.css">
+</head>
+
+<header></header>
+
+<body>
+
+	<div id="particles-js"></div>
+
+	<div id="service">	
+	</div>
+</body>
+
+<footer></footer>
+
+</html>
+
+<script>
+	
+
+  	var url = location.href;
+	var id = url.substring(url.lastIndexOf('=') + 1);
+	function load() {
+		console.log(id)
+		var xhttp = new XMLHttpRequest();
+		console.log("hola")
+		xhttp.onreadystatechange = function() {
+			console.log("hola")
+		if(this.readyState == 4 && this.status == 200) {
+			console.log("hola")
+			let service = document.getElementById("service"); 
+			let responses = JSON.parse(this.responseText);
+			for(var i = 0; i < responses.length; i++) {
+				console.log(id)
+				console.log(responses[i].id)
+				if(id == responses[i].id) {
+					 
+		  				var service_info_h1 = '<h1>'+responses[i].title+'</h1>'
+		  				var service_info_h3 = '<h3>'+responses[i].subtitle+'</h3>'
+		  				var service_info_p = '<p>'+responses[i].description+'</p>'
+		 				var service_info_button = '<button href="/html/Presupuesto.html" id="service-budget-button" class="btn btn-primary">Budget</button>'
+		  				var service_info ='<div id="service-info">'+service_info_h1+service_info_h3+service_info_p+service_info_button+'</div>'
+		  				var service_img = '<div id="service-img-background"><img src="'+responses[i].url+'"></div>'
+						service.insertAdjacentHTML("afterbegin", service_info);
+						service.insertAdjacentHTML("afterbegin", service_img);
+					
+				}
+			}
+		};
+	}
+	xhttp.open("GET", "http://192.168.56.101:3000/services/getalljson", true);
+	console.log("hola")
+	xhttp.send();
+	}
+	
+	load();
+	$('header').load('header_alt.html');
+	$('footer').load('footer_alt.html');
+</script>
+
+<script src="/js/particles.min.js"></script>
+<script src="/js/app.js"></script>

@@ -1,0 +1,41 @@
+{
+ "services":[{
+   "id":1,
+   "imgDir": "/img/services-1.jpg",
+   "title": "Auditoria BlackHat",
+   "subtitle": "Auditoria de seguridad externa sin información previa por la empresa",
+   "description": "Realizamos comprobaciones técnicas sin información previa. Validamos los hallazgos encontrados en una primera fase y se establecen los objetivos deseados por el cliente en fases posteriores."
+ },
+ {
+   "id":2,
+   "imgDir": "/img/services-2.jpg",
+   "title": "Auditoria WhiteHat",
+   "subtitle": "Auditoria de seguridad externa con información previa por la empresa",
+   "description": "Realizamos comprobaciones técnicas con información previa. Analizamos los hallazgos encontrados en una primera fase y se focaliza en los objetivos deseados por el cliente para solventarlos."
+   
+ },
+ {
+   "id":3,
+   "imgDir": "/img/services-3.jpg",
+   "title": "Auditoria Interna",
+   "subtitle": "Auditoria legal por muestreo",
+   "description": "Obtenemos una visión real de la seguridad interna de la organización empleando las técnicas y procesos que podría utilizar un empleado interno. Analizamos el grado de cumplimiento de la organización en materia de protección de datos a través de la recogida de evidencias"
+ },
+ {
+   "id":4,
+   "imgDir": "/img/services-4.jpg",
+   "title": "Auditoria 360º",
+   "subtitle": "Auditoria de seguridad técnica, humana y de procesos",
+   "description": "Obtenemos una visión real de todos los ámbitos de seguridad de la organización, 360º que incluye, no solo los técnicos, sino organizativos, necesidades de formación, etc."
+   
+ },
+ {
+   "id":5,
+   "imgDir": "/img/services-5.jpg",
+   "title": "Prevención de fugas de información",
+   "subtitle": "Se monitoreara los sistemas y configuraran para evitar cualquier fuga de información",
+   "description": "Protegemos a las empresas contra fugas de información como: acciones internas maliciosas, problemas de productividad, peligros de la política BYOD "
+   
+ }
+ ]
+}

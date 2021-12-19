@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page </title>
+
+  <link rel="stylesheet" media="screen" type="text/css" href="../css/bootstrap.css">
+  <link rel="stylesheet" media="screen" type="text/css" href="../css/style_Jorge.css">
+  <link rel="stylesheet" media="screen" type="text/css" href="../css/style_carlos.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+
+
+</head>
+
+<header></header>
+
+<body id="login-body">
+<h5 hidden id="succesfully" >You sign in succesfully</h5>
+    
+<div id="login-container" class="container ">
+    <div class="row align-items-center">
+        <div class="col-11 mx-auto">
+            <div class="card card-body">
+                                                    
+                <form id="submitForm" action="/login" method="post" >
+                    <div class="form-group required">
+                        <lSabel for="username">Username / Email</lSabel>
+                        <input type="text" class="form-control text-lowercase" id="username" required name="username" value="" autocomplete="off" minlength="5">
+                    </div>                    
+                    <div class="form-group required">
+                        <label class="d-flex flex-row align-items-center" for="password">Password 
+                        </label>
+                        <input type="password" class="form-control" required="" id="password" name="password" value="">
+                    </div>
+                    
+                    <div class="form-group pt-1">
+                        <button class="btn submit-btn btn-primary btn-block" id="submit-btn"buttontype="submit">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>  
+</body>
+
+<footer></footer>
+
+</html>
+
+<script>
+    var form;
+    function checkUser() {
+      $.getJSON("/json/usernames.json", function(json){
+          $.each(json.users, function(user) {
+            console.log("check user");
+            if(document.getElementById("username").value === this.user && document.getElementById("password").value === this.pass){
+              return true;
+              break;
+            }
+          });
+        });
+      return false;
+    }
+
+    function initiate(){
+      console.log("iniate");
+      var button = document.getElementById("submit-btn");
+      button.addEventListener("click", post);
+      form = document.getElementById("submitForm");
+      form.addEventListener("invalid", validation, true);
+      form.addEventListener("input", checkval);
+    }
+    function validation(e){
+      var elem = e.target;
+      elem.style.background = '#FFDDDD'; 
+    }
+    function post(){
+      var elem = document.getElementById("username");
+      var valid = form.checkValidity();
+      if(valid){
+        if(checkUser()){
+          console.log("valid");
+          //form.submit();
+          console.log("reset");
+          form.reset();
+          document.getElementById("login-container").setAttribute('style', 'height: 75vh');
+          document.getElementById("succesfully").removeAttribute("hidden");
+          localStorage.setItem("userConnected", "true");
+        } else {
+          alert("Invalid credentials")
+          
+        }
+        
+      }else if(elem.validity.patternMismatch || elem.validity.valueMissing){
+        
+        alert('Value Missing');
+      }
+    }    
+    function checkval(e){
+      var elem = e.target;
+      if(elem.validity.valid){
+        elem.style.background = '#FFFFFF';
+      }else{
+        elem.style.background = '#FFDDDD';
+      }
+    }
+
+    $(document).ready(function(){
+        $("header").load("header_alt.html");
+        $('footer').load('footer_alt.html');
+    });
+    addEventListener("load", initiate);
+</script>

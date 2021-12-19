@@ -1,0 +1,19 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "imgUrl": "/img/carrousel-1.jpg",
+      "text": "Welcome! Now you can feel save"
+    },
+    {
+      "id": 2,
+      "imgUrl": "/img/carrousel-2.png",
+      "text": "Check out some of our services in order to improve your security"
+    },
+    {
+      "id": 3,
+      "imgUrl": "/img/carrousel-3.jpg",
+      "text": "Let's make your life safer with our proffesionals"
+    }
+  ]
+}
