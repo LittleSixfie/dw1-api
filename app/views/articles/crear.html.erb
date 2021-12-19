@@ -1,0 +1,64 @@
+
+<form method="POST" action="/articles/insertar" accept-charset="UTF-8" role="form" id="creararticle" name="creararticle" enctype="multipart/form-data">
+    
+<!-- Protección CSRF -->
+<%= token_tag nil %>
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label for="title" class="negrita">Title:</label>
+                    <div>
+                        <input class="form-control" placeholder="Tile" name="title" type="text" id="nombre" onload="crearUrlAmigable(this.value);" onkeypress="crearUrlAmigable(this.value);" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subtitle" class="negrita">Subtitle:</label>
+                    <div>
+                        <input class="form-control" placeholder="Subtitle" name="subtitle" type="text" id="subtitle" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tags" class="negrita">Tags:</label>
+                    <div>
+                        <input class="form-control" placeholder="tags" name="tags" type="text" id="tags" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="preview" class="negrita">Preview:</label>
+                    <div>
+                        <input type="text" class="form-control" name="preview" id="preview" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="text" class="negrita">Text:</label>
+                    <div>
+                        <input type="text" class="form-control" name="text" id="text" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="image" class="negrita">Select image:</label>
+                    <div>
+                        <input class="form-control" type="file" name="image" id="img" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info">Guardar</button>
+                <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+
+                    <br>
+                    <br>
+
+            </div>
+        </section>
+    </div>
+</div>
+</form>
+

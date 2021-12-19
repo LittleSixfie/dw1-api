@@ -1,0 +1,56 @@
+<!-- Mensajes -->
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert" id="notice" class="notice">
+        <%= flash[:notice] %>                                    
+    </div>
+<% end %>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Url</th>
+            <th>Title</th>
+            <th>Subtitle</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @services.each do |services| %>
+            <tr>
+                <td class="v-align-middle">
+                    <%= services.url %>
+                </td>
+                <td class="v-align-middle">
+                    <%= services.title %>
+                </td>
+                <td class="v-align-middle">
+                    <%= services.subtitle %>
+                </td>
+                <td class="v-align-middle">
+                    <%= services.description %>
+                </td>
+                
+                <td class="v-align-middle">
+ 
+                    <form method="POST" action="/services/remove/<%= services.id %>" accept-charset="UTF-8" class="form-horizontal" role="form" onsubmit="return ConfirmDelete()">
+ 
+                        <!-- Protección CSRF -->
+                        <%= token_tag nil %> 
+ 
+                        <a href="/services/getter/<%= services.id %>" class="btn btn-dark">Detalles</a>
+                        <a href="/services/updator/<%= services.id %>" class="btn btn-primary">Editar</a>
+ 
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+ 
+                    </form>
+ 
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
+
+<div align="left">
+    <a href="creator" class="btn btn-success mt-4 ml-3">  Agregar </a>
+</div>
+ 

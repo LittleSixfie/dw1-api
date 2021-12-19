@@ -1,0 +1,75 @@
+
+<% @articles.each do |articles| %>
+
+    <form method="POST" action="/articles/editar/<%= articles.id %>" accept-charset="UTF-8" role="form" id="actualizararticle" name="actualizararticle" enctype="multipart/form-data">
+
+    <!-- Protección CSRF -->
+    <%= token_tag nil %> 
+
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            <label for="tile" class="negrita">Nombre:</label>
+                            <div>
+                                <input class="form-control" placeholder="title" name="title" type="text" id="title" onload="crearUrlAmigable(this.value);" onkeypress="crearUrlAmigable(this.value);" value="<%= articles.title %>" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subtitle" class="negrita">Subtitle:</label>
+                            <div>
+                                <input class="form-control" placeholder="subtitle" name="subtitle" type="text" id="subtitle" value="<%= articles.subtitle %>" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tags" class="negrita">Tags:</label>
+                            <div>
+                                <input class="form-control" placeholder="tags" name="tags" type="text" id="tags" value="<%= articles.tags %>" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preview" class="negrita">Preview:</label>
+                            <div>
+                                <input class="form-control" placeholder="preview" name="preview" type="text" id="preview" value="<%= articles.preview %>" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="text" class="negrita">Text:</label>
+                        <div>
+                            <input class="form-control" placeholder="text" name="text" type="text" id="text" value="<%= articles.text %>" >
+                        </div>
+                    </div>
+
+                        <div class="form-group">
+                            <label for="image" class="negrita">Select image:</label>
+                            <div>
+                                <input class="form-control" type="file" name="image" id="image" >
+                                <br>
+                                <br> Actual image:
+                                <br>
+                                <br>
+                                <img src="/assets/images/<%= articles.image %>" class="img-fluid" title="<%= articles.title %>" alt="<%= articles.title %>">
+
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-info">Guardar</button>
+                        <%= link_to 'Cancelar', url_for(:back), class: "btn btn-warning" %>
+
+                            <br>
+                            <br>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </form>
+
+<% end %>
+

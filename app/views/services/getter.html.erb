@@ -1,0 +1,48 @@
+
+<% @services.each do |services| %>
+
+    <section class="text-center">
+        <div class="container">
+            <h3 class="jumbotron-heading"><%= services.title %></h3>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+
+                
+
+                <div class="col-md-5" align="left">
+                    <strong>Title:</strong>
+                    <%= services.title %>
+
+                    <br><br>    
+
+                    <strong>Subtitle:</strong>
+                    <%= services.subtitle %>
+
+                    <br><br>
+
+                    <strong>url:</strong>
+                    <%= services.url %>
+                    
+
+                    <br><br>
+
+                    <strong>Text:</strong>
+                    <%= services.description %>
+
+                    <br><br>
+
+                    <strong>Created:</strong>
+                    <%= services.created_at.strftime("%d/%m/%Y") %>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<% end %>

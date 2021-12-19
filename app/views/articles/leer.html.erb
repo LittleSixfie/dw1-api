@@ -1,0 +1,50 @@
+
+<% @articles.each do |articles| %>
+
+    <section class="text-center">
+        <div class="container">
+            <h3 class="jumbotron-heading"><%= articles.title %></h3>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-5">
+                    <img src="/assets/images/<%= articles.image %>" class="img-fluid" title="<%= articles.title %>" alt="<%= articles.title %>">
+                </div>
+
+                <div class="col-md-5" align="left">
+
+                    <strong>Subtitle:</strong>
+                    <%= articles.subtitle %>
+
+                    <br><br>
+
+                    <strong>Tags:</strong>
+                    <%= articles.tags %>
+
+                    <br><br>
+
+                    <strong>Preview:</strong>
+                    <%= articles.preview %>
+
+                    <br><br>
+
+                    <strong>Text:</strong>
+                    <%= articles.text %>
+
+                    <br><br>
+
+                    <strong>Created:</strong>
+                    <%= articles.created_at.strftime("%d/%m/%Y") %>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<% end %>
