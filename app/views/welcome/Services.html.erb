@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Services Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+  <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" media="screen" type="text/css" href="../css/bootstrap.css">
+<link rel="stylesheet" media="screen" type="text/css" href="../css/style_Jorge.css">
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+  <link rel="stylesheet" media="screen" type="text/css" href="../css/style_carlos.css">
+</head>
+
+<header></header>
+<body>
+
+  <div id="particles-js"></div>
+
+	<div class="services">
+
+    <div class="title-container">
+      <div class="title-jorge"><h1>Services</h1></div>
+      <div class="subtitle"><h3>These are the services our company provide to their customer's</h3></div>
+    </div>
+    
+    <div id=service-tile class='services-tile row justify-content-around'></div>
+    
+  </div>
+
+</body>
+<footer></footer>
+</html>
+
+<script>
+  function load (){
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+      if(this.readyState == 4 && this.status == 200) {
+          let tile = document.getElementById("service-tile"); 
+          let responses = JSON.parse(this.responseText);
+          
+          for(var i = 0; i < responses.length; i++) {
+            var services_button = '<button id="services-button'+responses[i].id+' class="btn btn-primary"><a id="'+responses[i].id+'" href="/html/Service.html?id='+responses[i].id+'">Read More</a></button>';
+            
+            var servicio_card_img = '<img id="services-card-img" class="card-img-top" src="'+responses[i].url+'">'
+            var servicio_card_texto = '<div id="services-service-card-body" class="card-body"><h3 class="card-title">'+responses[i].title+'</h3>'+services_button+'</div>';
+            var servicio_card ='<div id="services-box'+responses[i].id+'" class="col-xl-3 col-sm-5 col-11 services-box">'+servicio_card_img+servicio_card_texto+'</div>';
+            tile.insertAdjacentHTML("afterbegin", servicio_card);
+          }
+        }
+      };
+    xhttp.open("GET", "./services/getalljson", true);
+    xhttp.send();
+      
+  } 
+
+  load();
+  $('header').load('./header');
+	  $('footer').load('./footer');
+
+</script>
+
+<script src="/js/particles.min.js"></script>
+<script src="/js/app.js"></script>

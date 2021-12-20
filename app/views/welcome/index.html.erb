@@ -6,14 +6,9 @@
 
   <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" media="screen" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" media="screen" type="text/css" href="../stylesheets/welcome.scss">
-    <link rel="stylesheet" media="screen" type="text/css" href="css/style_carlos.css">
-    <link rel="stylesheet" media="screen" type="text/css" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+  
 </head>
 
 <body> 
@@ -41,7 +36,7 @@
         
         <img src=https://news.stanford.edu/pr/2014/images/motivation_news.jpg alt="People working">
         <br>
-        <button id="home-button" class="btn btn-primary"  onclick="location.href='../../../client/html/about_us.html'">Know the team</button>
+        <button id="home-button" class="btn btn-primary"  onclick="location.href='./about_us'">Know the team</button>
     </div>
 
     <div class="home-services">
@@ -60,7 +55,7 @@
        
         <img src=https://img.freepik.com/foto-gratis/pongase-contacto-nosotros-mano-empresario-sosteniendo-telefono-inteligente-movil-icono-correo-telefono-correo-electronico_52701-38.jpg?size=626&ext=jpg>
         <br>
-        <button class="btn btn-primary" id="home-contact-button" onclick="location.href='/html/contact.html'">Get Started</button>
+        <button class="btn btn-primary" id="home-contact-button" onclick="location.href='./contact'">Get Started</button>
     </div>   
     </div>
 
@@ -78,7 +73,7 @@ function loadServices (){
           let tile = document.getElementById("home-services-tile"); 
           let responses = JSON.parse(this.responseText);
           for(var i = 0; i < 3; i++) {
-            var services_button = '<button id="services-button'+responses[i].id+' class="btn btn-primary"><a id="'+responses[i].id+'" href="/html/Service.html?id='+responses[i].id+'">Read More</a></button>';
+            var services_button = '<button id="services-button'+responses[i].id+' class="btn btn-primary"><a id="'+responses[i].id+'" href="./Service.html?id='+responses[i].id+'">Read More</a></button>';
             var servicio_card_img = '<img id="services-card-img" class="card-img-top" src="'+responses[i].url+'">'
             var servicio_card_texto = '<div id="services-service-card-body" class="card-body"><h3 class="card-title">'+responses[i].title+'</h3>'+services_button+'</div>';
             var servicio_card ='<div id="services-box'+responses[i].id+'" class="col-xl-3 col-sm-5 col-11 services-box">'+servicio_card_img+servicio_card_texto+'</div>';
@@ -86,7 +81,7 @@ function loadServices (){
           }
         }
       };
-    xhttp.open("GET", "http://192.168.56.101:3000/services/getalljson", true);
+    xhttp.open("GET", "./services/getalljson", true);
     xhttp.send();
     resolve('done');
       /*
@@ -129,8 +124,8 @@ function loadServices (){
     $(document).ready(async function(){
 	  await loadCarrousel();
     await loadServices();
-	  $('header').load('/html/header_alt.html');
-	  $('footer').load('/html/footer_alt.html');
+	  $('header').load('./header');
+	  $('footer').load('./footer');
     const btn = $("a[href='/html/Service.html']");
     
     var myCarousel = document.querySelector('#carousel')
@@ -144,9 +139,7 @@ function loadServices (){
       
     })
 
-    $(btn).click(function(){
-            localStorage.setItem("id", (this.id));
-        });
+    
 	});
 </script>
 

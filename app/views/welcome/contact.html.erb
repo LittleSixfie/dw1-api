@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Contact</title>
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <link rel="stylesheet" media="screen" type="text/css" href="../css/style_carlos.css">
+</head>
+<header></header>
+<body class="contact-body">
+
+  <div id="particles-js"></div>
+
+  <div class="container contact-container">
+    <div class="row first-container-contact">
+      <div class="col-lg left-container-contact">
+        <iframe width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen
+        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJMeNugdKVQAwRTdA4VXYWO3Q&key=AIzaSyC7dB9yv9CWAgLYgLq56q_99fXvazL4GpY"></iframe>
+      </div>
+      <div class="col-lg container-contact-information">
+        <div class="fondo row">
+          <div class="col-8 title-contact-container">
+            <h1>Do not hesitate in get in touch with us</h1>
+          </div>
+          <div class="col-8 mt-3 span-contact-container">
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+          </div>
+          <nav class="col-8 information-contact-menu">
+            <p class="mb-5">Benefit of feature</p>
+            <p class="mb-5">Benefit of feature</p>
+            <p class="mb-5">Benefit of feature</p>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="row second-container-contact">
+        <div class="col-lg mb-5 contact-form-left">
+          <div class="row contact-group">
+            <div class="col-sm-12 contact-image"><img src="/img/contacto.png"></div>
+            <h1>Contact</h1>
+            <div class="col-sm-8 span-contact-description">
+              <span>Description of the service we can sell</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md contact-form">
+          <form class="form-contact needs-validation" action="javascript:postValidation(); javascript:limitSubmit()" method="post" novalidate>
+            <div class="row">
+              <p class="col-sm-6">
+                <input class="form-control input-contact" type="text" name="name" value="" placeholder="Nombre*" required>
+              </p>
+              <p class="col-sm-6">
+                <input class="form-control input-contact" type="text" name="second-name" value="" placeholder="Apellidos*" required>
+              </p>
+              <p class="col-sm-6">
+                <input class="form-control input-contact" type="text" name="email" value="" placeholder="Dirección de correo electrónico*" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+              </p>
+              <p class="col-sm-6">
+                <input class="form-control input-contact" type="text" name="telephone" value="" placeholder="Teléfono*" pattern="^\d{3}\d{3}\d{3}$" required>
+              </p>
+              <p class="col-sm-6">
+                <input class="form-control input-contact" type="text" name="business-name" value="" placeholder="Nombre del negocio*" required>
+              </p>
+              <p class="col-sm-6">
+                <input class="form-control input-contact" type="text" name="position" value="" placeholder="Cargo*" required>
+              </p>
+              <p class="col-sm-21">
+                <textarea class="form-control" id="textarea-contact" name="describe" rows="8" placeholder="Describe brevemente los servicios en los que estás interesado" required></textarea>
+              </p>
+              <p id="button-contact" class="col-sm-21">
+                <input class="btn btn-success" type="submit" value="Submit">
+              </p>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+
+</body>
+
+<footer></footer>
+
+<script>
+  var forms = document.querySelectorAll('.needs-validation');
+
+    Array.prototype.slice.call(forms).forEach( function(form)
+    {
+        form.addEventListener( 'submit', function (event)
+        {
+            if ( !form.checkValidity() )
+            {
+                event.preventDefault()
+                event.stopPropagation();
+            }
+
+            form.classList.add( 'was-validated' );
+      }, false );
+    } );
+
+    function postValidation() {
+      swal("La información ha sido enviada correctamente", "", "success");
+    }
+
+      function limitSubmit() {
+        var timesSubmitted = 0;
+        var maxSubmits = 3;
+        var intervalMilliseconds = 5000;
+        var closeInSeconds = 5;
+        var displayText = "#1 segundos";
+        var sweetAlertTimer;
+
+        $('input[type=submit]').click(function (event) {
+          timesSubmitted ++;
+          if (timesSubmitted >= maxSubmits) {
+            event.preventDefault();
+            swal({
+              title: "Podrá enviar el formulario en...",
+              text: displayText.replace(/#1/, closeInSeconds),
+              sweetAlertTimer: closeInSeconds * 1000,
+            });
+            sweetAlertTimer = setInterval(function() {
+              console.log(closeInSeconds);
+              closeInSeconds--;
+              if (closeInSeconds < 0) {
+                  clearInterval(sweetAlertTimer);
+              }
+              $('.swal-text').text(displayText.replace(/#1/, closeInSeconds));
+            }, 1000);
+
+            var timer = setTimeout(function () {
+              location.reload();
+            }, intervalMilliseconds);
+          }
+        });
+      }
+
+      $(document).ready(async function(){
+
+  	  $('header').load('header_alt.html');
+  	  $('footer').load('footer_alt.html');
+  	});
+
+    $(document).ready(async function(){
+	  
+	  $('header').load('./header');
+	  $('footer').load('./footer');
+	});
+
+</script>
+
+<script src="/js/particles.min.js"></script>
+<script src="/js/app.js"></script>
+
+<body>
+</html>
