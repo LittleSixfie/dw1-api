@@ -13,7 +13,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 
-/* You may have a few 'require' lines above this already */
+/* You may have a few 'require' slindes above this already */
 
 require("@popperjs/core")
 
