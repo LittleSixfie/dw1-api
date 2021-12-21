@@ -1,10 +1,10 @@
 
-<form method="POST" action="/services/insertService" accept-charset="UTF-8" role="form" id="crearservice" name="crearservice" enctype="multipart/form-data">
+<form id="api" method="POST" action="/services/insertService" accept-charset="UTF-8" role="form" id="crearservice" name="crearservice" enctype="multipart/form-data">
     
 <!-- Protección CSRF -->
 <%= token_tag nil %>
 
-<div class="row">
+<div id="api" class="row">
     <div class="col-md-12">
         <section class="panel">
             <div class="panel-body">

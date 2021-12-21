@@ -24,11 +24,15 @@ gem 'jbuilder', '~> 2.7'
 # Bootstrap 4  
 gem 'bootstrap', '~> 4.4.1' 
  
+gem 'aws-sdk', '~> 2'
 # Popper_js
 gem 'popper_js', '~> 1.16' 
  
 # Jquery-rails
 gem 'jquery-rails', '~> 4.3.5'
+
+gem 'particles-js-rails'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

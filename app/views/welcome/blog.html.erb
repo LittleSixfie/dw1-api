@@ -37,7 +37,7 @@
         let container = document.getElementById("container"); 
         let responses = JSON.parse(this.responseText);
         for(var i = 0; i < responses.length; i++) {
-          container.insertAdjacentHTML("afterbegin", '<div class="blog backcolor blog__new blog"><img class="blog__img" src="'+responses[i].image+'" alt="Image Title" /> <div class="blog__text tcolor"><h1 class="blog__title blog__new"><a href="#">'+responses[i].title+'</a></h1> <div class="blog__line"></div> <div class="blog__preview-text">'+responses[i].preview+'</div> <ul class="blog__button"> <li class="blog__readmore play blog__new"> <a id="'+responses[i].id+'" href="/html/article.html?id='+responses[i].id+'">Read more...</a></li></ul></div></div>');
+          container.insertAdjacentHTML("afterbegin", '<div class="blog backcolor blog__new blog"><img class="blog__img" src="/assets/images/'+responses[i].image+'" alt="Image Title" /> <div class="blog__text tcolor"><h1 class="blog__title blog__new"><a href="#">'+responses[i].title+'</a></h1> <div class="blog__line"></div> <div class="blog__preview-text">'+responses[i].preview+'</div> <ul class="blog__button"> <li class="blog__readmore play blog__new"> <a id="'+responses[i].id+'" href="/article.html?id='+responses[i].id+'">Read more...</a></li></ul></div></div>');
         }
       }
     };
@@ -53,7 +53,7 @@
             var new_img = '<div class="blog backcolor blog__new blog"><img class="blog__img" src="'+this.image+'" alt="Image Title" />';
             var new_title = '<div class="blog__text tcolor"><h1 class="blog__title blog__new"><a href="#">'+this.title+'</a></h1>';
             var new_text = '<div class="blog__line"></div> <div class="blog__preview-text">'+this.preview+'</div>';
-            var new_link = '<ul class="blog__button"> <li class="blog__readmore play blog__new"> <a id="'+this.id+'" href="/html/article.html">Read more...</a></li></ul></div></div>';
+            var new_link = '<ul class="blog__button"> <li class="blog__readmore play blog__new"> <a id="'+this.id+'" href="/article.html">Read more...</a></li></ul></div></div>';
             var new_container = new_img+new_title+new_text+new_link;
             $('.blog-container').append(new_container);
             resolve("load");
@@ -64,12 +64,7 @@
 
     $(document).ready(async function(){
         await load();
-        const name = document.querySelector(".btn");
-        const btn = $("a[href='/html/article.html']");
-        console.log(btn)
-        $(btn).click(function(){
-            localStorage.setItem("id", (this.id));
-        });
+        
         $('header').load('./header');
 	  $('footer').load('./footer');
   });*/

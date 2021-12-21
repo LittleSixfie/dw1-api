@@ -94,7 +94,7 @@ function loadServices (){
           let tile = document.getElementById("home-services-tile"); 
           let responses = JSON.parse(this.responseText);
           for(var i = 0; i < 3; i++) {
-            var services_button = '<button id="services-button'+responses[i].id+' class="btn btn-primary"><a id="'+responses[i].id+'" href="./Service.html?id='+responses[i].id+'">Read More</a></button>';
+            var services_button = '<button id="services-button" class="btn"><a id="'+responses[i].id+'" href="./Service.html?id='+responses[i].id+'">Read More</a></button>';
             var servicio_card_img = '<img id="services-card-img" class="card-img-top" src="'+responses[i].url+'">'
             var servicio_card_texto = '<div id="services-service-card-body" class="card-body"><h3 class="card-title">'+responses[i].title+'</h3>'+services_button+'</div>';
             var servicio_card ='<div id="services-box'+responses[i].id+'" class="col-xl-3 col-sm-5 col-11 services-box">'+servicio_card_img+servicio_card_texto+'</div>';
@@ -106,16 +106,7 @@ function loadServices (){
     xhttp.send();
     resolve('done');
       /*
-		$.getJSON("/json/services.json", function(json){
-        
-            for(var i = 0; i < 3; i++){
-                var servicio_card_img = '<img src="'+json.services[i].imgDir+'" class="card-img-top">'
-                var servicio_card_texto = '<div id="home-service-card-body" class="card-body"><h3 class="card-title">'+json.services[i].title+'</h3><a href="/html/Service.html" id="'+json.services[i].id+'"class="btn btn-primary">Read More</a> </div>';
-                var servicio_card ='<div id="home-services-tarjeta" class="col-xl-3 col-sm-5 col-11 ">'+servicio_card_img+servicio_card_texto+'</div>';
-                $('.home-services-tile').append(servicio_card);
-            }
-            resolve("done");
-	  });*/
+		*/
 	});
   } 
 

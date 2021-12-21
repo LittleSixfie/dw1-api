@@ -17,6 +17,8 @@ ActiveStorage.start()
 
 require("@popperjs/core")
 
+//= require particles.js
+import "particles.js"
 import "bootstrap"
 
 // Import the specific modules you may need (Modal, Alert, etc)

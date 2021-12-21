@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'Presupuesto' => 'welcome#Presupuesto'
   get 'Services' => 'welcome#Services'
   get 'HRM' => 'welcome#HRM'
+
+  get 'js/particles.min.js' => 'welcome#particles.min.js'
+
   get 'services/getall' => 'services#getall'
   get 'services/getalljson' => 'services#getalljson' 
   get 'services/getter/:id' => 'services#getter'
@@ -19,6 +22,8 @@ Rails.application.routes.draw do
   post 'services/trueupdate/:id', to: 'services#trueupdate'
   post 'services/insertService' => 'services#insertService'
   post 'services/remove/:id', to: 'services#remove'
+
+
 
   get 'articles/show' => 'articles#show'
   get 'articles/index' => 'articles#index'
